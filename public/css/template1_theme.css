@@ -1,0 +1,59 @@
+
+.loginPgBody{
+	background: url(../images/bg.jpg);
+	background-attachment:fixed;
+	background-repeat:no-repeat;
+	background-size:cover;
+	-moz-background-size:cover;
+	-webkit-background-size:cover; 
+	position: relative;z-index: 1;
+	
+
+}
+.login{
+	position: absolute;
+	background:#fff;
+	width: 300px;
+	height: 300px;
+	left:50%;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	opacity: 0.85;
+	-webkit-opacity:0.85;
+	-moz-opacity:0.85;
+	filter: alpha(opacity=0.15);
+	
+}
+.login,.line{
+	margin:6px 0px;
+}
+.logbanner{
+	font-size:20px;
+	padding: 20px 0px;
+
+}
+.loginicon{
+	position: absolute;
+	left: 20px;
+	top:2px;
+	text-align: center;
+	width: 35px;
+	height: 30px;
+	padding:6px 0px; 
+	border-right: #e9e9e9 1px solid;
+}
+.imgcode{
+	position: absolute;
+	left:60px;
+	top:3px;
+}
+.imgcode img{
+	cursor: pointer;
+}
+.codeline input{padding-left:140px;letter-spacing: 2px;}
+.logmsg{
+	padding-left:55px;
+}
+.submitline{margin-top: 20px;}
+.denglu{width:100%;}
