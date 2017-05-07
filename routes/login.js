@@ -6,12 +6,19 @@ var fs=require('fs');
 
 
 router.get('/',function (req,res) {
-	var txt=code.codeController(4);
-	console.log(txt);
-	res.render('login');
+	var time=new Date().getTime();
+	code.codeController(time,function (result) {
+		console.log(result);
+		res.render('login',{imgtime:time});
+	});
+	
 })
 
-router.get('/reborncode',function (req,res) {
+router.post('/reborncode',function (req,res) {
+	code.codeController(req.body.time,function (result) {
+		res.send(result);
+	});
+	
 	
 })
 

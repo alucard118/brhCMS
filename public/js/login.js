@@ -12,5 +12,10 @@ $(document).ready(function () {
 });
 
 function rebornCode() {
-	
+	var reborntime=new Date().getTime();
+	$.post('/login/rebornCode',{time:reborntime},function (result) {
+		console.log(result);
+		$('#imgreborn').attr('src','../images/captcha/code'+reborntime+'.png');
+	});
+
 }
