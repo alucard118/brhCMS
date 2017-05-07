@@ -2,7 +2,7 @@ var express=require('express');
 var router=express.Router();
 var captcha=require('../lib/captcha.js');
 var fs=require('fs');
-var code='';
+var code=' ';
 
 
 
@@ -26,7 +26,13 @@ router.post('/reborncode',function (req,res) {
 
 router.post('/',function (req,res) {
 	console.log(code);
-	console.log(req.body.name,req.body.password,req.body.captcha);
+	if(req.body.captcha==code){
+		console.log(req.body.name,req.body.password,req.body.captcha);	
+	}
+	else{
+		res.send('2');
+	}
+	
 })
 
 
