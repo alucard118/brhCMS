@@ -5,30 +5,30 @@
 <div class="login">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12 text-center logbanner">登录CMS</div>
+			<div class="col-xs-12 text-center logbanner">BRH CMS</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 line">
 				 <div class="loginicon"><span class="glyphicon glyphicon-user "></span></div>
-				<input type="text" class="form-control logmsg">
+				<input type="text" id="username" class="form-control logmsg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 line">
 				 <div class="loginicon"><span class="glyphicon glyphicon-lock "></span></div>
-				<input type="password" class="form-control logmsg">
+				<input type="password" id="password" class="form-control logmsg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 line codeline">
 				 <div class="loginicon"><span class="icon_key"></span></div>
 				 <div class="imgcode"><img id="imgreborn" src="../images/captcha/code<%- imgtime%>.png" height="28" width="80" onclick="rebornCode()"></div>
-				<input type=text class="form-control logmsg">
+				<input type=text id="captcha" class="form-control logmsg">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 submitline">
-				<button type="button" class="btn btn-primary denglu" on>登录</button>
+				<button type="button" class="btn btn-primary denglu" onclick="checkLogin()">登录</button>
 			</div>
 		</div>
 
