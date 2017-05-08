@@ -1,11 +1,11 @@
-var mongo=require('mongodb');
-var host="localhost";
-var port=mongo.Connection.DEFAULT_PORT;
-var db=new mongo.Db('brhCms',new mongo.Server(host,port,{auto_reconnect:true}),{safe:true});
+var mongo=require('mongodb').MongoClient;
+var MongoClient=require('mongodb').MongoClient;
+var url="mongodb://brhcms:ccfinfo2@localhost:27017/brhCms";
+
 
 var dbController={
 	checkUser:function (username,password) {
-		db.open(function (err,db) {
+		MongoClient.connect(url,function (err,db) {
 			db.collection('brhCms_users',function (err,collection) {
 				collection.find({name:username,password:password}).toArray(function (err,docs) {
 					if(docs.length!=0)

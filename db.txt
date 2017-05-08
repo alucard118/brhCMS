@@ -1,0 +1,6 @@
+数据库管理员
+info2  密码 info2@CCF2017
+
+
+brh cms
+brhcms  ccfinfo2
