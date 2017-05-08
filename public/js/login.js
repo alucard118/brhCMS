@@ -48,6 +48,12 @@ function checkLogin() {
 		data:{name:$('#username').val().trim(),password:$('#password').val(),captcha:$('#captcha').val().trim()},
 		success:function (data) {
 			console.log(data);
+			if(data=='2')
+				$('#captcha').css('border-color','#f63636');
+			else if(data=='1')
+				location.href='/admin';
+			else if(data=='-1')
+				console.log('none');
 		},
 		error:function () {
 			console.log('failed');
