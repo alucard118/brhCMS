@@ -8,7 +8,9 @@
 	font-weight: normal;
 	font-style: normal;
 }
-.loginPgBody{
+
+
+.loginBgBody{
 	background: url(../images/bg.jpg);
 	background-attachment:fixed;
 	background-repeat:no-repeat;
@@ -77,3 +79,30 @@
 }
 .submitline{margin-top: 20px;}
 .denglu{width:100%;}
+
+.noprevelige{
+	position: absolute;
+	background:#fff;
+	width: 500px;
+	height: 250px;
+	left:50%;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	opacity: 0.85;
+	-webkit-opacity:0.85;
+	-moz-opacity:0.85;
+	filter: alpha(opacity=0.15);
+
+}
+.sad{
+	font-size:80px;
+	color:#da3b3b;
+}
+.noprevelige .row{padding: 60px 0px;}
+
+header{
+	height: 60px;
+	background-color: #4786ad;
+}
+

@@ -1,14 +1,4 @@
 $(document).ready(function () {
-	var left=($(window).width()-$('.login').outerWidth())/2;
-	var top=($(window).height()-$('.login').outerHeight())/3;
-	$('.login').css({'left':left,'top':top});
-
-	$(window).resize(function () {
-		var left=($(window).width()-$('.login').outerWidth())/2;
-		var top=($(window).height()-$('.login').outerHeight())/3;
-		$('.login').css({'left':left,'top':top});
-	});
-
 	$('#username').focus(function () {
 		$(this).css('border-color','#68abdc');
 	});
@@ -30,6 +20,7 @@ $(document).ready(function () {
 
 });
 
+//重新生成随机码
 function rebornCode() {
 	var reborntime=new Date().getTime();
 	$.post('/login/rebornCode',{time:reborntime},function (result) {
@@ -40,6 +31,8 @@ function rebornCode() {
 	});
 
 }
+
+//提交登录信息
 function checkLogin() {
 	if ($('#username').val()!='' && $('#password').val()!='' && $('#captcha').val()!='') {
 		$.ajax({
@@ -48,8 +41,11 @@ function checkLogin() {
 		data:{name:$('#username').val().trim(),password:$('#password').val(),captcha:$('#captcha').val().trim()},
 		success:function (data) {
 			console.log(data);
-			if(data=='2')
+			if(data=='2'){
 				$('#captcha').css('border-color','#f63636');
+				rebornCode();
+			}
+
 			else if(data=='1')
 				location.href='/admin';
 			else if(data=='-1')

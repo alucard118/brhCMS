@@ -5,30 +5,27 @@ var md5=require('../lib/md5.js');
 var dbController=require('../model/dbController.js');
 var async=require('async');
 var fs=require('fs');
-var session=require('express-session');
 var code=' ';
 
 
-
-router.get('/',function (req,res) {
+router.get('/',function (req,res,next) {
 	var time=new Date().getTime();
 	captcha.codeController(time,function (result) {
 		code=result;
 		res.render('login',{imgtime:time});
 	});
-	
+	next()
 })
 
-router.post('/reborncode',function (req,res) {
+router.post('/reborncode',function (req,res,next) {
 	captcha.codeController(req.body.time,function (result) {
 		code=result;
 		res.send(result);
 	});
 	
-	
 })
 
-router.post('/',function (req,res) {
+router.post('/',function (req,res,next) {
 	//console.log(req.body.name,req.body.password);
 	if(req.body.captcha==code){
 		async.waterfall([function (callback) {
@@ -41,6 +38,8 @@ router.post('/',function (req,res) {
 			console.log(result);
 			if(result.length!=0){
 				if(result[0]['role']=="superAdmin"){
+					req.session.role=result[0]['role'];
+					req.session.user=req.body.name;
 					res.send('1');
 				}
 
