@@ -104,5 +104,44 @@
 header{
 	height: 60px;
 	background-color: #4786ad;
+	
+	padding:10px;
+	position: relative;
 }
+.headerbar{
+	position: absolute;
+	bottom: 0px;
+	padding: 0px;
+	margin:0px;
+	left:16.66666667%;
 
+}
+.headerbar li{
+	padding: 0px;
+	margin:0px;
+	list-style: none;
+	font-size: 20px;
+	color:#333;
+}
+.headerbar>li>a{
+	
+	font-size: 20px;
+	color:#fff;
+}
+.sidenav{
+	padding-left:0px;
+}
+.nav-pills > li > a{
+	border-radius:0px;
+	padding-left:20px;
+}
+.user_panel{
+	position: absolute;
+	right:10px;
+	bottom:10px;
+	color:#fff;
+}
+.user_panel a{
+	
+	color:#333;
+}
