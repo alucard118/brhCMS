@@ -19,7 +19,12 @@ $(document).ready(function () {
 	$('#captcha').blur(function () {
 		$(this).css('border-color','#ccc');
 	});
-	$()
+	$(document).keydown(function (event) {
+		event=event||window.event;
+		if(event.keyCode==13){
+			$('.denglu').click();
+		}
+	});
 
 });
 
