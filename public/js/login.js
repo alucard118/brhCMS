@@ -1,9 +1,11 @@
 $(document).ready(function () {
 	$('#username').focus(function () {
 		$(this).css('border-color','#68abdc');
+		$('#password').css('border-color','rgb(204,204,204)');
 	});
 	$('#password').focus(function () {
 		$(this).css('border-color','#68abdc');
+		$('#username').css('border-color','rgb(204,204,204)');
 	});
 	$('#captcha').focus(function () {
 		$(this).css('border-color','#68abdc');
@@ -17,6 +19,7 @@ $(document).ready(function () {
 	$('#captcha').blur(function () {
 		$(this).css('border-color','#ccc');
 	});
+	$()
 
 });
 
@@ -40,7 +43,7 @@ function checkLogin() {
 		url:'/login/',
 		data:{name:$('#username').val().trim(),password:$('#password').val(),captcha:$('#captcha').val().trim()},
 		success:function (data) {
-			console.log(data);
+			
 			if(data=='2'){
 				$('#captcha').css('border-color','#f63636');
 				rebornCode();
@@ -48,8 +51,10 @@ function checkLogin() {
 
 			else if(data=='1')
 				location.href='/admin';
-			else if(data=='-1')
-				console.log('none');
+			else if(data=='-1'){
+				$('#username').css('border-color','#f63636');
+				$('#password').css('border-color','#f63636');
+			}
 		},
 		error:function () {
 			console.log('failed');

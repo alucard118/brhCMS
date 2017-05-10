@@ -128,12 +128,56 @@ header{
 	font-size: 20px;
 	color:#fff;
 }
+.sidebar{
+	position: absolute;
+	background-color: #222d32;
+	width:210px;
+	top:0px;
+	left:0px;
+	margin-top: 60px;
+	min-height: 100%;
+}
 .sidenav{
 	padding-left:0px;
+}
+.sidebar-form{
+	border-radius:3px;
+	border:1px solid #374850;
+	margin:10px 10px;
+}
+.sidebar-form .btn{
+	color:#999;
+	border-top-left-radius:0px;
+	border-top-right-radius:2px;
+	border-bottom-right-radius:2px;
+	border-bottom-left-radius:0px;
+}
+.sidebar-form input[type="text"], .sidebar-form .btn{
+	box-shadow:none;
+	background-color:#fff;
+	border:1px solid transparent;
+	height:35px;
+}
+.nav-stacked>li>a{
+	border-left:3px solid transparent;
+}
+.nav-stacked>li:hover>a, .nav-stacked>li.active>a{
+	color:#fff;
+	background-color:#1e282c;
+	border-left-color: #3c8dbc;
 }
 .nav-pills > li > a{
 	border-radius:0px;
 	padding-left:20px;
+	color:#b8c7ce;
+}
+.nav-pills > li > a:hover{
+	background-color:#1e282c;
+	color:#fff;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+	color:#fff;
+	background-color: #333;
 }
 .user_panel{
 	position: absolute;
@@ -144,4 +188,7 @@ header{
 .user_panel a{
 	
 	color:#333;
+}
+.wrap{
+	margin-left: 200px;
 }

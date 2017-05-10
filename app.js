@@ -50,6 +50,6 @@ app.use('/admin',adminRouter);
 
 
 
-app.listen(3000,function () {
+app.listen(3000,'localhost',function () {
 	console.log('app is running on port 3000');
 })
