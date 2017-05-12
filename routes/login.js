@@ -30,7 +30,8 @@ router.post('/',function (req,res,next) {
 	if(req.body.captcha==code){
 		async.waterfall([function (callback) {
 			var password=md5.md5(req.body.password);
-			dbController.checkUser(req.body.name,password,function (result) {
+			var name=req.body.name.replace(/[\'\"\\\/\b\f\n\r\t]/g, '').replace(/[\@\#\$\%\^\&\*\{\}\:\"\L\<\>\?]/,'');
+			dbController.checkUser(name,password,function (result) {
 				callback(null,result);
 			});
 		}],function (err,result) {
