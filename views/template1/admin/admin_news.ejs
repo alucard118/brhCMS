@@ -31,12 +31,29 @@
 
 <div class="container-fluid wrap">
   <div class="row">
-    <div class="col-sm-10">
-      222222
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-4 news_op">
+          <button type=button class="btn btn-default btn-sm" id="createNews">新建</button>
+          <button type=button class="btn btn-default btn-sm" id="topNews">置顶</button>
+          <button type=button class="btn btn-default btn-sm" id="delNews">删除</button>
+        </div>
+        <div class="col-sm-6">
+        </div>
+        <div class="col-sm-2 text-right news_type">
+          <select class="selectpicker" data-width="100px">
+              <option value="all">全部</option>
+              <option value="section1">section1</option>
+              <option value="section2">section2</option>
+          </select>
+        </div>
+      </div>
     </div>
+  </div>
+  <div id="createNewsPanel">
   </div>
 </div>
 
 
-
+<script src="../js/admin.js"></script>
 <%- include('../footer')%>

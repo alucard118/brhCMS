@@ -191,4 +191,14 @@ header{
 }
 .wrap{
 	margin-left: 200px;
+	padding: 10px 40px;
+	position: relative;
+}
+.news_op>button{
+	margin-right: 10px;
+	margin-top: 10px;
+	width: 70px;
+}
+.news_type{
+	margin-top: 10px;
 }

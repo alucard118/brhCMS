@@ -1,11 +1,11 @@
 $(document).ready(function () {
-	var left=($(window).width()-$('.zdjz').outerWidth())/2;
-	var top=($(window).height()-$('.zdjz').outerHeight())/3;
-	$('.zdjz').css({'left':left,'top':top});
+	var left=($(window).width()-$('.modal_center').outerWidth())/2;
+	var top=($(window).height()-$('.modal_center').outerHeight())/3;
+	$('.modal_center').css({'left':left,'top':top});
 
 	$(window).resize(function () {
-		var left=($(window).width()-$('.zdjz').outerWidth())/2;
-		var top=($(window).height()-$('.zdjz').outerHeight())/3;
-		$('.zdjz').css({'left':left,'top':top});
+		var left=($(window).width()-$('.modal_center').outerWidth())/2;
+		var top=($(window).height()-$('.modal_center').outerHeight())/3;
+		$('.modal_center').css({'left':left,'top':top});
 	});
 });
