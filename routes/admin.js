@@ -23,6 +23,15 @@ router.get('/news',function (req,res) {
 	}
 	
 });
+router.get('/createNews',function (req,res) {
+	if(req.session.role=='superAdmin'){
+		res.render('./admin/admin_createNews',{user:req.session.user});
+	}
+	else if(req.session.user===undefined && req.session.role===undefined){
+		res.render('noprevelige');
+	}
+	
+});
 router.get('/date',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		res.render('./admin/admin_date',{user:req.session.user});

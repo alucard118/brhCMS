@@ -1,0 +1,90 @@
+<%- include('../header')%>
+<body>
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+<header class="container-fluid">
+   <img width=40 src="../images/logo2.png"><span style="color:#fff">RH CMS</span>
+  <ul class="headerbar">
+    <li><a href="/" target="_blank"><span class="glyphicon glyphicon-home"></span></a></li>
+  </ul>
+  <span class="user_panel"><img class="img-rounded" width=40 src="../images/pencil.png"> <%= user%> <a href="/admin/logout">退出</a></span>
+</header>
+<div class="sidebar">
+  <div class=" sidenav">
+        <form action="#" method="get" class="sidebar-form">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="搜索">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="glyphicon glyphicon-search"></i>
+                </button>
+              </span>
+          </div>
+        </form>
+        <ul class="nav nav-pills nav-stacked">
+          <li ><a href="/admin/home">仪表盘</a></li>
+          <li class="active"><a href="/admin/news">新闻管理</a></li>
+          <li ><a href="/admin/date">日程管理</a></li>
+          <li><a href="/admin/speaker">讲者管理</a></li>
+          <li><a href="/admin/sponsor">赞助管理</a></li>
+        </ul><br>
+        
+      </div>
+</div>
+
+<div class="container-fluid wrap">
+  <div class="row">
+    <div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-4 news_op">
+          新建新闻
+        </div>
+        
+        <div class="col-sm-8 ">
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1 news_op">
+          <span>标题：</span>
+        </div>
+        <div class="col-sm-4 news_op">
+        <input type="text" class="form-control">
+        </div>
+        <div class="col-sm-7 text-right news_type">
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1 news_op">
+          <span>栏目：</span>
+        </div>
+        <div class="col-sm-4 news_op">
+          <select class="selectpicker" data-width="100px">
+              <option value="all">全部</option>
+              <option value="section1">section1</option>
+              <option value="section2">section2</option>
+          </select>
+        </div>
+        <div class="col-sm-7 text-right news_type">
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1 news_op">
+          <span>内容：</span>
+        </div>
+        <div class="col-sm-10 news_op">
+          <textarea id="TextArea1" class="ckeditor"></textarea>
+        </div>
+        <div class="col-sm-1 text-right news_type">
+         
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<script src="../js/admin.js"></script>
+<%- include('../footer')%>

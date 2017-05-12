@@ -194,11 +194,18 @@ header{
 	padding: 10px 40px;
 	position: relative;
 }
+.news_op{
+	padding: 6px;
+}
 .news_op>button{
 	margin-right: 10px;
 	margin-top: 10px;
 	width: 70px;
 }
+.news_op>span{
+	line-height: 34px;
+}
 .news_type{
 	margin-top: 10px;
 }
+
