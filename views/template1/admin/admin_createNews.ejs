@@ -34,11 +34,14 @@
   <div class="row">
     <div class="col-sm-12">
     <div class="row">
-        <div class="col-sm-4 news_op">
-          新建新闻
+        <div class="col-sm-1 news_op">
+          <a href="/admin/news"><<返回</a>
         </div>
         
-        <div class="col-sm-8 ">
+        <div class="col-sm-4 news_op">
+          <span style="font-size:20px;">新建新闻</span>
+        </div>
+        <div class="col-sm-7">
          
         </div>
       </div>
@@ -57,15 +60,16 @@
         <div class="col-sm-1 news_op">
           <span>栏目：</span>
         </div>
-        <div class="col-sm-4 news_op">
+        <div class="col-sm-2 news_op">
           <select class="selectpicker" data-width="100px">
               <option value="all">全部</option>
               <option value="section1">section1</option>
               <option value="section2">section2</option>
           </select>
         </div>
-        <div class="col-sm-7 text-right news_type">
-         
+        <div class="col-sm-9  news_op">
+          <label class="checkbox-inline"><input type="checkbox" value="" id="setTop"><span>置顶</span></label>
+          <label class="checkbox-inline"><input id="endTime" type="text" class="form-control" placeholder="置顶失效时间"></label>
         </div>
       </div>
       <div class="row">
@@ -80,11 +84,35 @@
         </div>
       </div>
 
+       <div class="row">
+        <div class="col-sm-1 news_op">
+          
+        </div>
+        <div class="col-sm-7 news_op">
+            <button type=button class="btn btn-default btn-sm" >保存</button>
+          <button type=button class="btn btn-default btn-sm">预览</button>
+          <button type=button class="btn btn-default btn-sm" >发布</button>
+        </div>
+        <div class="col-sm-4 news_op">
+
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
+<script>
+    
+    $.datetimepicker.setLocale('ch');
+    
+    $('#endTime').datetimepicker({
+      format:'Y-m-d H:i',
+      minDate:0,
+      step:60,
 
+    });
+</script>
 
 <script src="../js/admin.js"></script>
 <%- include('../footer')%>

@@ -205,6 +205,21 @@ header{
 .news_op>span{
 	line-height: 34px;
 }
+.news_op>a{
+	line-height: 34px;
+}
+.news_op .checkbox-inline{
+	padding-left: 0px;
+}
+.news_op .checkbox-inline #setTop{
+	margin-top:10px;
+}
+.news_op .checkbox-inline span{
+	line-height: 34px;
+}
+.news_op .checkbox-inline #endTime{
+	display:none;
+}
 .news_type{
 	margin-top: 10px;
 }
