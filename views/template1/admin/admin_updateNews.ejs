@@ -77,7 +77,7 @@
           <span>内容：</span>
         </div>
         <div class="col-sm-10 news_op">
-          <textarea id="newsContent" class="ckeditor" ></textarea>
+          <textarea id="newsContent" class="ckeditor" ><%= newsContent[0]['content']%></textarea>
         </div>
         <div class="col-sm-1 text-right news_type">
           
@@ -118,6 +118,10 @@
       step:60,
 
     });
+</script>
+<script>
+  var editor = CKEDITOR.instances.newsContent;
+
 </script>
 
 <script src="../../js/admin.js"></script>
