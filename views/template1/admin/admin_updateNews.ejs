@@ -1,12 +1,12 @@
-<%- include('../header')%>
+<%- include('../secondLevelHeader')%>
 <body>
-<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
 <header class="container-fluid">
-   <img width=40 src="../images/logo2.png"><span style="color:#fff">RH CMS</span>
+   <img width=40 src="../../images/logo2.png"><span style="color:#fff">RH CMS</span>
   <ul class="headerbar">
     <li><a href="/" target="_blank"><span class="glyphicon glyphicon-home"></span></a></li>
   </ul>
-  <span class="user_panel"><img class="img-rounded" width=40 src="../images/pencil.png"> <%= user%> <a href="/admin/logout">退出</a></span>
+  <span class="user_panel"><img class="img-rounded" width=40 src="../../images/pencil.png"> <%= user%> <a href="/admin/logout">退出</a></span>
 </header>
 <div class="sidebar">
   <div class=" sidenav">
@@ -39,7 +39,7 @@
         </div>
         
         <div class="col-sm-4 news_op">
-          <span style="font-size:20px;">新建新闻</span>
+          <span style="font-size:20px;">修改新闻</span>
         </div>
         <div class="col-sm-7">
          
@@ -50,7 +50,7 @@
           <span>标题：</span>
         </div>
         <div class="col-sm-5 news_op">
-        <input type="text" class="form-control" id="newsTitle">
+        <input type="text" class="form-control" id="newsTitle" value="<%= newsContent[0]['title']%>">
         </div>
         <div class="col-sm-6 text-right news_type">
          
@@ -97,9 +97,9 @@
           <span class="newsNote"></span>
         </div>
         <div class="col-sm-4 news_op">
-            <input style="display:none;" id="published" type="text" value="0"><input style="display:none;" id="newsId" type="text">
+            <input style="display:none;" id="published" type="text" value="<%= newsContent[0]['published']%>"><input style="display:none;" id="newsId" type="text" value="<%= newsContent[0]['_id']%>">
         </div>
-        <div class="col-sm-1 news_op">
+        <div class="col-sm-1 news_op text-right">
             <a href="/admin/news"><<返回</a>
         </div>
       </div>
@@ -120,5 +120,5 @@
     });
 </script>
 
-<script src="../js/admin.js"></script>
+<script src="../../js/admin.js"></script>
 <%- include('../footer')%>

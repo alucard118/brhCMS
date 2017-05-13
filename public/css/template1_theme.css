@@ -209,7 +209,10 @@ header{
 	line-height: 34px;
 }
 .news_op .checkbox-inline{
-	padding-left: 0px;
+	padding-left: 15px;
+}
+.news_op .newsNote{
+	color:red;
 }
 .news_op .checkbox-inline #setTop{
 	margin-top:10px;
@@ -217,10 +220,13 @@ header{
 .news_op .checkbox-inline span{
 	line-height: 34px;
 }
-.news_op .checkbox-inline #endTime{
+.news_op .checkbox-inline #topEndTime{
 	display:none;
 }
 .news_type{
 	margin-top: 10px;
+}
+.newsListOp{
+	margin:3px 5px;
 }
 

@@ -8,16 +8,15 @@ var fs=require('fs');
 var code=' ';
 
 
-router.get('/',function (req,res,next) {
+router.get('/',function (req,res) {
 	var time=new Date().getTime();
 	captcha.codeController(time,function (result) {
 		code=result;
 		res.render('login',{imgtime:time});
 	});
-	next()
 })
 
-router.post('/reborncode',function (req,res,next) {
+router.post('/reborncode',function (req,res) {
 	captcha.codeController(req.body.time,function (result) {
 		code=result;
 		res.send(result);
@@ -25,7 +24,7 @@ router.post('/reborncode',function (req,res,next) {
 	
 })
 
-router.post('/',function (req,res,next) {
+router.post('/',function (req,res) {
 	//console.log(req.body.name,req.body.password);
 	if(req.body.captcha==code){
 		async.waterfall([function (callback) {

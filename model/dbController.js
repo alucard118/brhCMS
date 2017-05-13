@@ -1,6 +1,7 @@
 var mongo=require('mongodb').MongoClient;
 var MongoClient=require('mongodb').MongoClient;
 var url="mongodb://brhcms:ccfinfo2@localhost:27017/brhCms";
+var ObjectId=require('mongodb').ObjectID;
 
 
 var dbController={
@@ -16,8 +17,52 @@ var dbController={
 				
 				});
 			});
+			db.close();
 		})
 	},
+	saveNews:function (title,topic,topEndTime,content,published,saveTime,callback) {
+		MongoClient.connect(url,function (err,db) {
+			db.collection('brhCms_newsList',function (err,collection) {
+				collection.insert({'title':title,'topic':topic,'topEndTime':topEndTime,'content':content,'published':published,'saveTime':saveTime},function (err,docs) {
+					if(err) console.log(err);
+					else{
+						callback(docs);
+					}
+				})
+			})
+			db.close();
+		})
+	},
+	showNews:function (id,callback) {
+		MongoClient.connect(url,function (err,db) {
+			db.collection('brhCms_newsList',function (err,collection) {
+				if(id!=undefined){
+					collection.find({'_id':ObjectId(id)}).toArray(function (err,docs) {
+					callback(docs);
+					})
+				}
+				else{
+					collection.find().sort({'saveTime':-1}).toArray(function (err,docs) {
+					callback(docs);
+					})
+				}
+			})
+			db.close();
+		})
+	},
+	updateNews:function (id,title,topic,topEndTime,content,published,saveTime,callback) {
+		MongoClient.connect(url,function (err,db) {
+			db.collection('brhCms_newsList',function (err,collection) {
+				collection.update({'_id':id},{'title':title,'topic':topic,'topEndTime':topEndTime,'content':content,'published':published,'saveTime':saveTime},function (err,docs) {
+					if(err) console.log(err);
+					else{
+						callback(docs);
+					}
+				})
+			})
+			db.close();
+		})
+	}
 
 };
 module.exports=dbController;
