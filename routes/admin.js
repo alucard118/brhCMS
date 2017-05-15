@@ -4,21 +4,20 @@ var fs=require('fs');
 var multiparty=require('multiparty');
 var fsExists=require('../lib/fsExist.js');
 var dbController=require('../model/dbController.js');
-var async=require('async');
+var util=require('util');
 
-var stats=fsExists.check('./public/images/');
-console.log('stats'+stats);
 
 router.get('/',function (req,res) {
 	if(req.session.role=='superAdmin'){
-		
-		if(fsExists.check('./public/images/'+req.session.user)===false){
-			console.log('dir not exist');
-			fs.mkdir('./public/images/'+req.session.user,function (err) {
-				if(err) console.log('checkDirError'+err);
-				else console.log('dir done');
+		fsExists.check('./public/images/'+req.session.user,function (result) {
+			if (result=='false') {
+				fs.mkdir('./public/images/'+req.session.user,function (err) {
+					console.log('dir not exist');
+					if(err) console.log('checkDirError'+err);
 			});
-		}
+			}
+		})
+		
 		res.redirect('/admin/home');
 
 	}
@@ -32,8 +31,10 @@ router.post('/fileUpload',function (req,res) {
 			var form=new multiparty.Form({uploadDir:'./public/images/'+req.session.user});
 			form.parse(req,function (err,fields,files) {
 			var fileTmp=JSON.stringify(files,null,2);
-			console.log(form);
+			console.log(fileTmp);
 			if(err) console.log('fileUploadError:'+err);
+			util.inspect({fields: fields, files: files});
+			res.send("<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction("+ files['upload'][0]['path'] + ")</script>")
 		})
 		
 	}
