@@ -55,14 +55,13 @@
         <tr>
           <td style="width:80px;"><input type="checkbox">全选</td><td style="min-width:180px;" class="text-center">标题</td><td class="text-center">发布时间</td><td class="text-center">状态</td><td class="text-center">操作</td>
           <% var state={0:'未发布',1:'已发布'}; for(var i=0;i<newsList.length;i++){%>
-              <tr><td><input type="checkbox"> <%= i+1%>.</td><td><%= newsList[i]['title']%></td><td class="text-center"><%= newsList[i]['publishTime']%></td><td class="text-center"><%= state[newsList[i]['published']]%></td><td class="text-center"><a class="newsListOp" href="/admin/updateNews/:<%= newsList[i]['_id']%>">修改</a><a class="newsListOp" href="#">预览</a><a class="newsListOp" href="#">发布</a><a class="newsListOp" href="
+              <tr><td><input type="checkbox"> <%= i+1%>.</td><td><%= newsList[i]['title']%></td><td class="text-center"><%= newsList[i]['publishTime']%></td><td class="text-center"><%= state[newsList[i]['published']]%></td><td class="text-center"><a class="newsListOp" href="/admin/updateNews/:<%= newsList[i]['_id']%>">修改</a><a class="newsListOp" href="#">发布</a><a class="newsListOp" href="#">撤销</a><a class="newsListOp" href="
               #" style="color:red">删除</a></td></tr>
           <% }%>
         </tr
       </table>
   </div>
 </div>
-
 
 
 <script src="../js/admin.js"></script>

@@ -36,7 +36,6 @@ $(document).ready(function () {
 				},
 				success:function (data) {
 					$('#newsId').val(data);
-					$('.newsNote').text('已保存').fadeOut(5000);
 				},
 				error:function () {
 					console.log('failed');

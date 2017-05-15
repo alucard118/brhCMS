@@ -29,6 +29,7 @@ var speakersRouter=require('./routes/speakers');
 var sponsorsRouter=require('./routes/sponsors');
 var loginRouter=require('./routes/login');
 var adminRouter=require('./routes/admin');
+var nopreveligeRouter=require('./routes/noprevelige')
 
 
 
@@ -45,6 +46,7 @@ app.use('/speakers',speakersRouter);
 app.use('/sponsors',sponsorsRouter);
 app.use('/login',loginRouter);
 app.use('/admin',adminRouter);
+app.use('/noprevelige',nopreveligeRouter);
 
 
 
