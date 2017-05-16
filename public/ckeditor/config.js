@@ -24,5 +24,7 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Find,Scayt,CopyFormatting,Language,About';
-	config.filebrowserUploadUrl ='/admin/fileUpload'
+	config.filebrowserUploadUrl ='/admin/fileUpload';
+	config.filebrowserBrowseUrl='./public/upload';
+	config.image_previewText=' ';
 };

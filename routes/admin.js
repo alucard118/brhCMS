@@ -11,9 +11,9 @@ var url=require('url');
 
 router.get('/',function (req,res) {
 	if(req.session.role=='superAdmin'){
-		fsExists.check('./public/images/'+req.session.user,function (result) {
+		fsExists.check('./public/upload/'+req.session.user,function (result) {
 			if (result=='false') {
-				fs.mkdir('./public/images/'+req.session.user,function (err) {
+				fs.mkdir('./public/upload/'+req.session.user,function (err) {
 					console.log('dir not exist');
 					if(err) console.log('checkDirError'+err);
 			});
@@ -28,13 +28,23 @@ router.get('/',function (req,res) {
 	}
 	
 })
+router.get('/updateNews/public/upload',function (req,res) {
+	if(req.session.role=='superAdmin'){
+		var reParam = new RegExp( '(?:[\?&]|&)' + 'CKEditorFuncNum' + '=([^&]+)', 'i' );
+		var funNum=req.url.match(reParam);
+		funcNum=(funNum&&funNum.length>1)?funNum[1]:null;
+
+		 var fileUrl = req.rawHeaders[1]+'/images/upload/'+req.session.user;
+		 res.send("<script>window.opener.CKEDITOR.tools.callFunction( "+funcNum+", "+fileUrl+" );window.close();</script>")
+	}
+})
 router.post('/fileUpload',function (req,res) {
 	if(req.session.role=='superAdmin'){
-			var form=new multiparty.Form({uploadDir:'./public/images/'+req.session.user});
+			var form=new multiparty.Form({uploadDir:'./public/upload/'+req.session.user});
 			form.parse(req,function (err,fields,files) {
 			var fileTmp=JSON.stringify(files,null,2);
 			path=req.rawHeaders[1]+(files['upload'][0]['path'].replace('public',''));
-			console.log(path);
+			console.log(req.url);
 			if(err) console.log('fileUploadError:'+err);
 			util.inspect({fields: fields, files: files});
 			
@@ -45,9 +55,9 @@ router.post('/fileUpload',function (req,res) {
 		res.redirect('/noprevelige');
 	}
 })
-router.get('/fileUpload',function (req,res) {
-				res.send("<script type='text/javascript'>window.open.CKEDITOR.tools.callFunction(1,"+path+")"+"</script>")
-			});
+// router.get('/fileUpload',function (req,res) {
+// 				res.send("<script type='text/javascript'>window.open.CKEDITOR.tools.callFunction(1,"+path+")"+"</script>")
+// 			});
 
 router.get('/home',function (req,res) {
 	if(req.session.role=='superAdmin'){
