@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended:false}));
 app.use(bodyParser.json());
 app.use(session({
     secret: 'sessionbrh',
-    cookie: { maxAge: 60000*10 },
+    cookie: { maxAge: 60000*15 },
     resave: false,
     saveUninitialized:false,
     store:new MongoStore({url:'mongodb://brhcms:ccfinfo2@localhost:27017/brhCms',
@@ -36,6 +36,9 @@ var nopreveligeRouter=require('./routes/noprevelige')
 
 app.set('views',path.join(__dirname,'views/template1'));
 app.set('view engine','ejs');
+
+
+
 
 
 app.use(express.static(path.join(__dirname,'public')));

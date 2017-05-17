@@ -22,9 +22,11 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'others', groups: [ 'others' ] },
 		{ name: 'about', groups: [ 'about' ] }
 	];
-
+	config.extraPlugins = 'popup';
 	config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Find,Scayt,CopyFormatting,Language,About';
-	config.filebrowserUploadUrl ='/admin/fileUpload';
 	config.filebrowserBrowseUrl='./public/upload';
+	config.filebrowserUploadUrl ='/admin/fileUpload';
+	config.extraPlugins = 'filebrowser';
+	
 	config.image_previewText=' ';
 };

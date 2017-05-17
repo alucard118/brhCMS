@@ -5,7 +5,6 @@ var multiparty=require('multiparty');
 var fsExists=require('../lib/fsExist.js');
 var dbController=require('../model/dbController.js');
 var util=require('util');
-var url=require('url');
 
 
 
@@ -31,22 +30,30 @@ router.get('/',function (req,res) {
 router.get('/updateNews/public/upload',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		var reParam = new RegExp( '(?:[\?&]|&)' + 'CKEditorFuncNum' + '=([^&]+)', 'i' );
-		var funNum=req.url.match(reParam);
-		funcNum=(funNum&&funNum.length>1)?funNum[1]:null;
+		var funcNum=req.url.match(reParam);
+		funcNum=(funcNum&&funcNum.length>1)?funcNum[1]:null;
 
-		 var fileUrl = req.rawHeaders[1]+'/images/upload/'+req.session.user;
-		 res.send("<script>window.opener.CKEDITOR.tools.callFunction( "+funcNum+", "+fileUrl+" );window.close();</script>")
+		 var fileUrl ='http://'+ req.rawHeaders[1]+'/images/upload/'+req.session.user;
+		 res.render('./admin/fileList');
+		 //res.send("<script>window.opener.CKEDITOR.tools.callFunction( "+funcNum+", '"+fileUrl+" ');window.close();</script>")
 	}
 })
 router.post('/fileUpload',function (req,res) {
 	if(req.session.role=='superAdmin'){
 			var form=new multiparty.Form({uploadDir:'./public/upload/'+req.session.user});
 			form.parse(req,function (err,fields,files) {
-			var fileTmp=JSON.stringify(files,null,2);
-			path=req.rawHeaders[1]+(files['upload'][0]['path'].replace('public',''));
-			console.log(req.url);
+			//var fileTmp=JSON.stringify(files,null,2);
+
+			//获取ckeditor实例post的CKEditorFuncNum参数
+			var reParam = new RegExp( '(?:[\?&]|&)' + 'CKEditorFuncNum' + '=([^&]+)', 'i' );
+			var funcNum=req.url.match(reParam);
+			funcNum=(funcNum&&funcNum.length>1)?funcNum[1]:null;
+
+			//生成回传的文件链接
+			var fileUrl='http://'+req.rawHeaders[1]+(files['upload'][0]['path'].replace('public',''));
 			if(err) console.log('fileUploadError:'+err);
 			util.inspect({fields: fields, files: files});
+			res.send("<script>window.parent.CKEDITOR.tools.callFunction( "+funcNum+", '"+fileUrl+" ');window.close();</script>")
 			
 		})
 		
