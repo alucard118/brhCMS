@@ -22,7 +22,7 @@ router.get('/',function (req,res) {
 		res.redirect('/admin/home');
 
 	}
-	else if(req.session.user===undefined && req.session.role===undefined){
+	else {
 		res.redirect('/noprevelige');
 	}
 	
@@ -34,8 +34,11 @@ router.get('/updateNews/public/upload',function (req,res) {
 		funcNum=(funcNum&&funcNum.length>1)?funcNum[1]:null;
 
 		 var fileUrl ='http://'+ req.rawHeaders[1]+'/images/upload/'+req.session.user;
-		 res.render('./admin/fileList');
+		 res.render('./admin/fileList',{user:req.session.user});
 		 //res.send("<script>window.opener.CKEDITOR.tools.callFunction( "+funcNum+", '"+fileUrl+" ');window.close();</script>")
+	}
+	else{
+		res.redirect('/noprevelige');
 	}
 })
 router.post('/fileUpload',function (req,res) {
