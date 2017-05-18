@@ -5,8 +5,9 @@ var multiparty=require('multiparty');
 var fsExists=require('../lib/fsExist.js');
 var dbController=require('../model/dbController.js');
 var util=require('util');
+var fileEx=require('../lib/fileExplorer.js')
 
-
+fileEx.fileEx();
 
 router.get('/',function (req,res) {
 	if(req.session.role=='superAdmin'){
@@ -46,16 +47,20 @@ router.post('/fileUpload',function (req,res) {
 			var form=new multiparty.Form({uploadDir:'./public/upload/'+req.session.user});
 			form.parse(req,function (err,fields,files) {
 			//var fileTmp=JSON.stringify(files,null,2);
-
+			var fileName=files['upload'][0]['path'].split('/');
+			var fileOriginalName=files['upload'][0]['originalFilename'].split('.')[0]+'_'+new Date().getTime()+'.'+files['upload'][0]['originalFilename'].split('.')[1];
+			
 			//获取ckeditor实例post的CKEditorFuncNum参数
 			var reParam = new RegExp( '(?:[\?&]|&)' + 'CKEditorFuncNum' + '=([^&]+)', 'i' );
 			var funcNum=req.url.match(reParam);
 			funcNum=(funcNum&&funcNum.length>1)?funcNum[1]:null;
 
 			//生成回传的文件链接
-			var fileUrl='http://'+req.rawHeaders[1]+(files['upload'][0]['path'].replace('public',''));
+			var fileUrl='http://'+req.rawHeaders[1]+'/upload/'+req.session.user+'/'+fileOriginalName;
+			//console.log(fileUrl);
 			if(err) console.log('fileUploadError:'+err);
 			util.inspect({fields: fields, files: files});
+			fs.renameSync('./public/upload/'+req.session.user+"/"+fileName[fileName.length-1],'./public/upload/'+req.session.user+"/"+fileOriginalName);
 			res.send("<script>window.parent.CKEDITOR.tools.callFunction( "+funcNum+", '"+fileUrl+" ');window.close();</script>")
 			
 		})
