@@ -20,10 +20,10 @@ var dbController={
 			db.close();
 		})
 	},
-	saveNews:function (title,topic,topEndTime,content,published,saveTime,callback) {
+	saveNews:function (title,topic,topEndTime,content,published,saveTime,imgPath,callback) {
 		MongoClient.connect(url,function (err,db) {
 			db.collection('brhCms_newsList',function (err,collection) {
-				collection.insert({'title':title,'topic':topic,'topEndTime':topEndTime,'content':content,'published':published,'saveTime':saveTime},function (err,docs) {
+				collection.insert({'title':title,'topic':topic,'topEndTime':topEndTime,'content':content,'published':published,'saveTime':saveTime,'img':imgPath},function (err,docs) {
 					if(err) console.log(err);
 					else{
 						callback(docs);
@@ -50,10 +50,10 @@ var dbController={
 			db.close();
 		})
 	},
-	updateNews:function (id,title,topic,topEndTime,content,published,saveTime,callback) {
+	updateNews:function (id,title,topic,topEndTime,content,published,saveTime,imgPath,callback) {
 		MongoClient.connect(url,function (err,db) {
 			db.collection('brhCms_newsList',function (err,collection) {
-				collection.update({'_id':ObjectId(id)},{'title':title,'topic':topic,'topEndTime':topEndTime,'content':content,'published':published,'saveTime':saveTime},function (err,docs) {
+				collection.update({'_id':ObjectId(id)},{'title':title,'topic':topic,'topEndTime':topEndTime,'content':content,'published':published,'saveTime':saveTime,'img':imgPath},function (err,docs) {
 					if(err) console.log(err);
 					else{
 						callback(docs);

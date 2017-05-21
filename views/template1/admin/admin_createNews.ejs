@@ -71,7 +71,22 @@
           <label class="checkbox-inline"><input type="checkbox" value="" id="setTop"><span>置顶</span></label>
           <label class="checkbox-inline"><input id="topEndTime" type="text" class="form-control" placeholder="置顶截止时间"></label>
         </div>
+       
       </div>
+      <div class="row">
+        <div class="col-sm-1 news_op">
+          <span>封面图片：</span>
+        </div>
+        <div class="col-sm-1 news_op">
+            <img src="" style="width:100%;"/>
+        </div>
+         <div class="col-sm-5 news_op">
+          <form enctype="multipart/form-data" method="post" action="/admin/news" lang="zh-cn" id="newsImg">
+          <input type="file" name="upload">
+          </form>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-sm-1 news_op">
           <span>内容：</span>

@@ -42,6 +42,20 @@ router.get('/updateNews/public/upload',function (req,res) {
 		res.redirect('/noprevelige');
 	}
 })
+router.get('/public/upload',function (req,res) {
+	if(req.session.role=='superAdmin'){
+		var reParam = new RegExp( '(?:[\?&]|&)' + 'CKEditorFuncNum' + '=([^&]+)', 'i' );
+		var funcNum=req.url.match(reParam);
+		funcNum=(funcNum&&funcNum.length>1)?funcNum[1]:null;
+
+		 var fileUrl ='http://'+ req.rawHeaders[1]+'/images/upload/'+req.session.user;
+		 res.render('./admin/fileList',{user:req.session.user});
+		 //res.send("<script>window.opener.CKEDITOR.tools.callFunction( "+funcNum+", '"+fileUrl+" ');window.close();</script>")
+	}
+	else{
+		res.redirect('/noprevelige');
+	}
+})
 router.post('/fileUpload',function (req,res) {
 	if(req.session.role=='superAdmin'){
 			var form=new multiparty.Form({uploadDir:'./public/upload/'+req.session.user});
@@ -94,12 +108,24 @@ router.get('/news',function (req,res) {
 	}
 	
 });
+router.post('/newsImg',function (req,res) {
+		var form=new multiparty.Form({uploadDir:'./public/upload/'+req.session.user});
+
+		form.parse(req,function (err,fields,files) {
+			var fileName=files['upload'][0]['path'].split('/');
+			var fileOriginalName=files['upload'][0]['originalFilename'].split('.')[0]+'_'+new Date().getTime()+'.'+files['upload'][0]['originalFilename'].split('.')[1];
+			if(err) console.log('fileUploadError:'+err);
+			util.inspect({fields: fields, files: files});
+			fs.renameSync('./public/upload/'+req.session.user+"/"+fileName[fileName.length-1],'./public/upload/'+req.session.user+"/"+fileOriginalName);
+		});
+})
 router.post('/news',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		var date=new Date();
 		date=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes();
+		var imgPath='./upload/'+req.session.user+'/'+req.body.img;
 		if(req.body.id==''){
-			dbController.saveNews(req.body.newsTitle,req.body.newsTopic,req.body.topEndTime,req.body.newsContent,req.body.published,date,function (result) {
+			dbController.saveNews(req.body.newsTitle,req.body.newsTopic,req.body.topEndTime,req.body.newsContent,req.body.published,date,imgPath,function (result) {
 				if(result){
 					res.send(result['ops'][0]['_id']);
 
@@ -109,7 +135,7 @@ router.post('/news',function (req,res) {
 			});
 		}
 		else{
-			dbController.updateNews(req.body.id,req.body.newsTitle,req.body.newsTopic,req.body.topEndTime,req.body.newsContent,req.body.published,date,function (result) {
+			dbController.updateNews(req.body.id,req.body.newsTitle,req.body.newsTopic,req.body.topEndTime,req.body.newsContent,req.body.published,date,imgPath,function (result) {
 				if(result){
 					res.send(req.body.id);
 					console.log('已更新新闻');
