@@ -50,11 +50,11 @@ var dbController={
 			db.close();
 		})
 	},
-	publishNews:function (id,callback) {
+	publishNews:function (id,publishTime,callback) {
 		MongoClient.connect(url,function (err,db) {
 			db.collection('brhCms_newsList',function (err,collection) {
 				if(id!=undefined){
-					collection.update({'_id':ObjectId(id)},{$set:{'published':'1'}},function (err,result) {
+					collection.update({'_id':ObjectId(id)},{$set:{'published':'1','publishTime':publishTime}},function (err,result) {
 						if(err) console.log(err);
 						else{
 							callback(result);
@@ -68,13 +68,26 @@ var dbController={
 		MongoClient.connect(url,function (err,db) {
 			db.collection('brhCms_newsList',function (err,collection) {
 				if(id!=undefined){
-					collection.update({'_id':ObjectId(id)},{$set:{'published':'0'}},function (err,result) {
+					collection.update({'_id':ObjectId(id)},{$set:{'published':'0','publishTime':''}},function (err,result) {
 						if(err) console.log(err);
 						else{
 							callback(result);
 						}
 					})
 				}
+			})
+		})
+	},
+	deleteNews:function (id,callback) {
+		MongoClient.connect(url,function (err,db) {
+			db.collection('brhCms_newsList',function (err,collection) {
+				collection.remove({'_id':ObjectId(id)},function (err,docs) {
+					if(err) console.log(err);
+					else{
+						console.log('delete News '+id);
+						callback(docs);
+					}
+				})
 			})
 		})
 	},

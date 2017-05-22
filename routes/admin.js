@@ -120,18 +120,47 @@ router.get('/news',function (req,res) {
 	
 });
 
+//publish News
 router.get('/news/published/:id',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		var id=req.params.id.replace(':','');
 		if(id!=''){
-			dbController.publishNews(id,function (result) {
-				console.log(result);
+			var publishTime=new Date();
+			publishTime=publishTime.getFullYear()+'-'+(publishTime.getMonth()+1)+'-'+publishTime.getDate()+' '+publishTime.getHours()+':'+publishTime.getMinutes();
+			dbController.publishNews(id,publishTime,function (result) {
 				res.redirect('/admin/news');
 			})
 		}
 	}
 	else{
 		res.redirect('/noprevelige');
+	}
+})
+
+//unpublish News
+router.get('/news/unpublished/:id',function (req,res) {
+	if(req.session.role=='superAdmin'){
+		var id=req.params.id.replace(':','');
+		if(id!=''){
+			dbController.unpublishNews(id,function (result) {
+				res.redirect('/admin/news');
+			})
+		}
+	}
+	else{
+		res.redirect('/noprevelige');
+	}
+})
+
+//delete News
+router.get('/news/delete/:id',function (req,res) {
+	if(req.session.role=='superAdmin'){
+		var id=req.params.id.replace(':','');
+		if(id!=''){
+			dbController.deleteNews(id,function (result) {
+				res.redirect('/admin/news');
+			})
+		}
 	}
 })
 
