@@ -229,4 +229,12 @@ header{
 .newsListOp{
 	margin:3px 5px;
 }
+#uploadedImg{
+	width:150px;
+	position: relative;
+}
+#uploadedImg>img{
+	border:#7d7d7d 1px solid;
+	cursor: pointer;
+}
 

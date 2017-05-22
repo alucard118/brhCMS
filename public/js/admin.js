@@ -14,6 +14,32 @@ $(document).ready(function () {
 		}
 	})
 
+	$('#upload_newsImg').click(function () {
+			if ($('#newsImg>input').val()!='') {
+				var formData=new FormData($('#newsImg')[0]);
+				var newsImgName=$('#newsImg>input').val();
+				newsImgName=newsImgName.split('\\');
+				newsImgName=newsImgName[newsImgName.length-1];
+				$.ajax({
+					type:'post',
+					url:'/admin/newsImg',  
+	          		processData: false,
+					contentType: false,
+					data:formData,
+					success:function (data) {
+						$('#uploadedImg>img').attr('src',data);
+					},
+					error:function () {
+						console.log('upload images failed');
+					}
+				})
+			}
+	});
+
+	$('#del_newsImg').click(function () {
+		$('#uploadedImg>img').attr('src','/images/newsDefaultImg.jpg');
+	});
+
 	$('#newsSave').click(function () {
 		var editor = CKEDITOR.instances.newsContent;
 		if($('#newsTitle').val()==''){
@@ -27,25 +53,13 @@ $(document).ready(function () {
 			return false;
 		}
 		else{
-			
-			if ($('#newsImg>input').val()!='') {
-				var formData=new FormData($('#newsImg')[0]);
-				var newsImgName=$('#newsImg>input').val();
-				newsImgName=newsImgName.split('\\')[newsImgName.length-1];
-				$.ajax({
-					type:'post',
-					url:'/admin/newsImg',  
-	          		processData: false,
-					contentType: false,
-					data:formData,
-					success:function (data) {
-						console.log(data);
-					},
-					error:function () {
-						console.log('upload images failed');
-					}
-				})
-			}
+
+			var newsImgName=$('#uploadedImg>img').attr('src');
+			newsImgName=newsImgName.split('/');
+			if(newsImgName[newsImgName.length-1]!='newsDefaultImg.jpg')
+				newsImgName='/news/'+newsImgName[newsImgName.length-1];
+			else
+				newsImgName='';
 			$.ajax({
 				type:'post',
 				url:'/admin/news',  

@@ -50,6 +50,34 @@ var dbController={
 			db.close();
 		})
 	},
+	publishNews:function (id,callback) {
+		MongoClient.connect(url,function (err,db) {
+			db.collection('brhCms_newsList',function (err,collection) {
+				if(id!=undefined){
+					collection.update({'_id':ObjectId(id)},{$set:{'published':'1'}},function (err,result) {
+						if(err) console.log(err);
+						else{
+							callback(result);
+						}
+					})
+				}
+			})
+		})
+	},
+	unpublishNews:function (id,callback) {
+		MongoClient.connect(url,function (err,db) {
+			db.collection('brhCms_newsList',function (err,collection) {
+				if(id!=undefined){
+					collection.update({'_id':ObjectId(id)},{$set:{'published':'0'}},function (err,result) {
+						if(err) console.log(err);
+						else{
+							callback(result);
+						}
+					})
+				}
+			})
+		})
+	},
 	updateNews:function (id,title,topic,topEndTime,content,published,saveTime,imgPath,callback) {
 		MongoClient.connect(url,function (err,db) {
 			db.collection('brhCms_newsList',function (err,collection) {

@@ -72,6 +72,24 @@
           <label class="checkbox-inline"><input id="topEndTime" type="text" class="form-control" placeholder="置顶截止时间" value="<%= newsContent[0]['topEndTime']%>"></label>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-sm-1 news_op">
+          <span>封面图：</span>
+        </div>
+        <div class="col-sm-2 news_op">
+            
+            <div id="uploadedImg" >
+            <button type="button" class="close" style="margin-right:5px;margin-top:5px;position:absolute;right:0px;width:20px;" id="del_newsImg">&times;</button>
+            <img src=<%= newsContent[0]['img']%> style="width:150px;"></div>
+        </div>
+         <div class="col-sm-5 news_op">
+          <form enctype="multipart/form-data" method="post" action="/admin/news" lang="zh-cn" id="newsImg">
+          <input type="file" name="upload">
+          </form>
+          <button style="margin-top:5px;padding:0px 20px;height:20px;vertical-align:middle;line-height:18px;-moz-user-select: none;" class="btn btn-default btn-xs" title="上传" id="upload_newsImg">上 传</button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-sm-1 news_op">
           <span>内容：</span>
