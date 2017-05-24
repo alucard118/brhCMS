@@ -120,13 +120,13 @@ router.get('/news',function (req,res) {
 	
 });
 
-//publish News
+//发布 News
 router.get('/news/published/:id',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		var id=req.params.id.replace(':','');
 		if(id!=''){
 			var publishTime=new Date();
-			publishTime=publishTime.getFullYear()+'-'+(publishTime.getMonth()+1)+'-'+publishTime.getDate()+' '+publishTime.getHours()+':'+publishTime.getMinutes();
+			publishTime=publishTime.getFullYear()+'-'+(publishTime.getMonth()+1)+'-'+publishTime.getDate()+' '+publishTime.getHours()+':'+(publishTime.getMinutes()<10?'0'+publishTime.getMinutes():publishTime.getMinutes());
 			dbController.publishNews(id,publishTime,function (result) {
 				res.redirect('/admin/news');
 			})
@@ -137,7 +137,7 @@ router.get('/news/published/:id',function (req,res) {
 	}
 })
 
-//unpublish News
+//撤销 News
 router.get('/news/unpublished/:id',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		var id=req.params.id.replace(':','');
@@ -152,7 +152,7 @@ router.get('/news/unpublished/:id',function (req,res) {
 	}
 })
 
-//delete News
+//删除 News
 router.get('/news/delete/:id',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		var id=req.params.id.replace(':','');
@@ -182,7 +182,7 @@ router.post('/newsImg',function (req,res) {
 router.post('/news',function (req,res) {
 	if(req.session.role=='superAdmin'){
 		var date=new Date();
-		date=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes();
+		date=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+' '+date.getHours()+':'+(date.getMinutes()<10?'0'+date.getMinutes():date.getMinutes());
 		if(req.body.img!='')
 			var imgPath='/upload/'+req.session.user+req.body.img;
 		else
@@ -240,10 +240,7 @@ router.get('/updateNews/:id',function (req,res) {
 	
 });
 
-//发布新闻
-router.get('/published/:id',function () {
-	
-})
+
 
 //日程管理
 router.get('/date',function (req,res) {
