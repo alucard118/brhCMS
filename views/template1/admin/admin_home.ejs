@@ -6,28 +6,34 @@
     <li><a href="/" target="_blank"><span class="glyphicon glyphicon-home"></span></a></li>
   </ul>
   <span class="user_panel"><img class="img-rounded" width=40 src="../images/pencil.png"> <%= user%> <a href="/admin/logout">退出</a></span>
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#adminSidebar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
 </header>
-<div class="sidebar">
-  <div class=" sidenav">
-        <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="搜索">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="glyphicon glyphicon-search"></i>
-                </button>
-              </span>
-          </div>
-        </form>
-        <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="/admin/home">仪表盘</a></li>
-          <li ><a href="/admin/news">新闻管理</a></li>
-          <li><a href="/admin/date">日程管理</a></li>
-          <li><a href="/admin/speaker">讲者管理</a></li>
-          <li><a href="/admin/sponsor">赞助管理</a></li>
-        </ul><br>
-        
-      </div>
-</div>
+
+  <div class="sidebar" id="adminSidebar">
+    <div class=" sidenav">
+          <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="搜索">
+                <span class="input-group-btn">
+                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </span>
+            </div>
+          </form>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="/admin/home">仪表盘</a></li>
+            <li ><a href="/admin/news">新闻管理</a></li>
+            <li><a href="/admin/date">日程管理</a></li>
+            <li><a href="/admin/speaker">讲者管理</a></li>
+            <li><a href="/admin/sponsor">赞助管理</a></li>
+          </ul><br>
+          
+        </div>
+  </div>
 
 <div class="container-fluid wrap">
   <div class="row">

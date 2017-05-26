@@ -39,6 +39,12 @@ $(document).ready(function () {
 	$('#del_newsImg').click(function () {
 		$('#uploadedImg>img').attr('src','/images/newsDefaultImg.jpg');
 	});
+	$('#newsItemAll').click(function () {
+		if($(this).is(':checked'))
+			$('.newsItem').prop('checked',true);
+		else
+			$('.newsItem').removeAttr('checked');
+	})
 
 	$('#newsSave').click(function () {
 		var editor = CKEDITOR.instances.newsContent;
