@@ -1,7 +1,7 @@
 <%- include('header')%>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse no-margin">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -29,6 +29,67 @@
     </div>
   </div>
 </nav>
+<section id="main-slider" class="no-margin">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="http://shapebootstrap.net/demo/html/corlate/images/slider/bg1.jpg" alt="Chania">
+      <div class="carousel-caption">
+        <h3>Chania</h3>
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="http://shapebootstrap.net/demo/html/corlate/images/slider/bg2.jpg" alt="Chania">
+      <div class="carousel-caption">
+        <h3>Chania</h3>
+        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="http://shapebootstrap.net/demo/html/corlate/images/slider/bg3.jpg" alt="Flower">
+      <div class="carousel-caption">
+        <h3>Flowers</h3>
+        <p>Beatiful flowers in Kolymbari, Crete.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+</section>
+
+<section id="indexNews" class="yo-margin">
+  <div class="container">
+      <div class="row" style="margin:20px">
+        <div class="col-lg-12 text-center"><h2>大会新闻</2></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"><img class="img-responsive" src="http://www.ccf.org.cn/upload/resources/image/2016/11/29/25851_1013x651c.jpg"></div>
+        <div class="col-md-6"><h3 class="no-margin">We asked 3 experts: How will AI change our lives in the near future?</h3><p>Imagine a world where your car drives itself, your fridge does the grocery shopping, and robots work alongside you. Rapid advances in artificial intelligence are turning that world into a near-future possibility. But what will that future really look like, and how will it change our lives? We...</p></div>
+      </div>
+  </div>
+</section>
 
 
 

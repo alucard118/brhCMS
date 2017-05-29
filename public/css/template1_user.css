@@ -44,6 +44,26 @@ html{
 	color:#fff;
 	
 }
+#main-slider{
+	position: relative;
+	max-height: 500px;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .icon-prev{
+	left:40px;
+}
+.carousel-control .glyphicon-chevron-right, .carousel-control .icon-next{
+	right:40px;
+}
+.carousel-inner > .item > a > img, .carousel-inner > .item > img{
+	width:100%;
+}
+.carousel-inner{
+	max-height: 500px;
+}
+
+
+.no-margin{margin:0px;padding: 0px;}
+.yo-margin{margin: 3% 0px;}
 footer{
 	background-color: #222;
 	padding-top:2rem;
