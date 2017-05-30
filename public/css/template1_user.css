@@ -64,6 +64,16 @@ html{
 
 .no-margin{margin:0px;padding: 0px;}
 .yo-margin{margin: 3% 0px;}
+.yo-padding{padding: 0px 0px 20px 0px;}
+#indexNews>.container>.row{
+	padding: 20px;
+}
+#indexNews>.container>.row>.col-md-4{
+	padding: 22px;
+}
+#indexNews .container img{
+	width:100%;
+}
 footer{
 	background-color: #222;
 	padding-top:2rem;
