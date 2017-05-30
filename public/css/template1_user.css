@@ -57,7 +57,7 @@ html{
 .carousel-inner > .item > a > img, .carousel-inner > .item > img{
 	width:100%;
 }
-.carousel-inner{
+.item,.carousel-inner,.carousel-caption{
 	max-height: 500px;
 }
 
