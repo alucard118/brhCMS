@@ -31,6 +31,7 @@ var dbController={
 				})
 			})
 			db.close();
+			MongoClient.close();
 		})
 	},
 	showNews:function (id,callback) {
@@ -58,6 +59,8 @@ var dbController={
 						if(err) console.log(err);
 						else{
 							callback(result);
+							db.close();
+							MongoClient.close();
 						}
 					})
 				}
@@ -72,6 +75,8 @@ var dbController={
 						if(err) console.log(err);
 						else{
 							callback(result);
+							db.close();
+							MongoClient.close();
 						}
 					})
 				}
@@ -86,6 +91,8 @@ var dbController={
 					else{
 						console.log('delete News '+id);
 						callback(docs);
+						db.close();
+						MongoClient.close();
 					}
 				})
 			})
@@ -98,10 +105,12 @@ var dbController={
 					if(err) console.log(err);
 					else{
 						callback(docs);
+						db.close();
+						MongoClient.close();
 					}
 				})
 			})
-			db.close();
+			
 		})
 	}
 
